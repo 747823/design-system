@@ -1,6 +1,5 @@
 import React from 'react'
 import styled from 'styled-components'
-import Icon from './Icon'
 import Button from './Button'
 import theme from './theme'
 
@@ -17,13 +16,16 @@ const TransparentButton = styled(Button)`
   }
 `
 
-const IconButton = ({ name, size, color, ...props }) => (
-  <TransparentButton {...props}>
-    <div>
-      <Icon name={name} size={size} color={color} />
-    </div>
-  </TransparentButton>
-)
+const IconButton = ({ icon, size, color, ...props }) => {
+  const Icon = icon
+  return (
+    <TransparentButton {...props}>
+      <div>
+        <Icon size={size} color={color} />
+      </div>
+    </TransparentButton>
+  )
+}
 
 IconButton.displayName = 'IconButton'
 

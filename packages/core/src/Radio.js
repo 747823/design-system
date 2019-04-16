@@ -1,7 +1,7 @@
 import React from 'react'
 import styled from 'styled-components'
 import theme from './theme'
-import Icon from './Icon'
+import { RadioChecked, RadioEmpty } from 'pcln-icons-perf'
 
 const RadioWrap = styled.div`
   display: inline-block;
@@ -30,19 +30,19 @@ const RadioInput = styled.input`
   }
 `
 
-const RadioIcon = styled(Icon)`
-  vertical-align: middle;
-`
-
 const Radio = props => {
   const { checked, disabled } = props
 
-  const radioIconName = checked ? 'radioChecked' : 'radioEmpty'
+  const Icon = checked ? RadioChecked : RadioEmpty
+
+  const RadioIcon = styled(Icon)`
+    vertical-align: middle;
+  `
 
   return (
     <RadioWrap checked={checked} disabled={disabled}>
       <RadioInput type="radio" {...props} />
-      <RadioIcon name={radioIconName} size={24} />
+      <RadioIcon size={24} />
     </RadioWrap>
   )
 }

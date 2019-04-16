@@ -2,7 +2,6 @@ import React from 'react'
 import Box from './Box'
 import Card from './Card'
 import Flex from './Flex'
-import Icon from './Icon'
 import Text from './Text'
 import theme from './theme'
 import styled from 'styled-components'
@@ -23,28 +22,30 @@ const BorderConcealer = styled(Box)`
   }
 `
 
-const HideableIcon = styled(Icon)`
-  ${display};
-`
+const Hug = ({ bg, color, p, fontSize, icon, iconDisplay, ...props }) => {
+  const HideableIcon = styled(icon)`
+    ${display};
+  `
 
-const Hug = ({ bg, color, p, fontSize, icon, iconDisplay, ...props }) => (
-  <HugCard {...props} borderColor={bg}>
-    <Flex bg={bg} color={color} p={p} alignItems="center">
-      {!!icon && (
-        <HideableIcon
-          mr={2}
-          mt="-2px"
-          mb="2px"
-          name={icon}
-          size={24}
-          display={iconDisplay}
-        />
-      )}
-      <Text fontSize={fontSize}>{props.text}</Text>
-    </Flex>
-    <BorderConcealer>{props.children}</BorderConcealer>
-  </HugCard>
-)
+  return (
+    <HugCard {...props} borderColor={bg}>
+      <Flex bg={bg} color={color} p={p} alignItems="center">
+        {!!icon && (
+          <HideableIcon
+            mr={2}
+            mt="-2px"
+            mb="2px"
+            name={icon}
+            size={24}
+            display={iconDisplay}
+          />
+        )}
+        <Text fontSize={fontSize}>{props.text}</Text>
+      </Flex>
+      <BorderConcealer>{props.children}</BorderConcealer>
+    </HugCard>
+  )
+}
 
 Hug.defaultProps = {
   bg: 'green',
@@ -57,7 +58,7 @@ Hug.defaultProps = {
 
 Hug.propTypes = {
   iconDisplay: PropTypes.arrayOf(PropTypes.string),
-  icon: PropTypes.string,
+  icon: PropTypes.element,
   text: PropTypes.oneOfType([
     PropTypes.node,
     PropTypes.arrayOf(PropTypes.node),

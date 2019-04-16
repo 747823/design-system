@@ -2,7 +2,7 @@ import React from 'react'
 import Box from './Box'
 import Flex from './Flex'
 import Text from './Text'
-import Icon from './Icon'
+import { Success, Warning, Attention, Information } from 'pcln-icons-perf'
 import CloseButton from './CloseButton'
 import Heading from './Heading'
 import PropTypes from 'prop-types'
@@ -11,43 +11,43 @@ const bannerColors = {
   green: {
     backgroundColor: 'green',
     color: 'white',
-    icon: 'success'
+    icon: Success
   },
   lightGreen: {
     backgroundColor: 'lightGreen',
     color: 'darkGreen',
-    icon: 'success'
+    icon: Success
   },
   red: {
     backgroundColor: 'red',
     color: 'white',
-    icon: 'warning'
+    icon: Warning
   },
   lightRed: {
     backgroundColor: 'lightRed',
     color: 'darkRed',
-    icon: 'warning'
+    icon: Warning
   },
   orange: {
     backgroundColor: 'orange',
     color: 'white',
-    icon: 'attention'
+    icon: Attention
   },
   blue: {
     backgroundColor: 'blue',
     color: 'white',
-    icon: 'information'
+    icon: Information
   },
   lightBlue: {
     backgroundColor: 'lightBlue',
     color: 'darkBlue',
-    icon: 'information'
+    icon: Information
   }
 }
 
 const Banner = props => {
   const bannerColor = bannerColors[props.bg] || {}
-  const icon = props.iconName || bannerColor.icon
+  const Icon = props.icon || bannerColor.icon
 
   return (
     <Box
@@ -56,7 +56,7 @@ const Banner = props => {
       color={bannerColor.color || props.color}
     >
       <Flex justifyContent="space-between" alignItems="flex-start">
-        {!!icon && !!props.showIcon && (
+        {Icon && props.showIcon && (
           <Icon name={icon} mr={2} size={24} mt="-2px" />
         )}
         <Box w={1}>
@@ -66,7 +66,7 @@ const Banner = props => {
             {props.children}
           </Text>
         </Box>
-        {!!props.onClose && (
+        {props.onClose && (
           <CloseButton
             onClick={props.onClose}
             ml={2}

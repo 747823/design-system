@@ -2,7 +2,7 @@ import React from 'react'
 import styled, { css } from 'styled-components'
 import PropTypes from 'prop-types'
 import theme from './theme'
-import Icon from './Icon'
+import { BoxChecked, BoxEmpty } from 'pcln-icons-perf'
 import Box from './Box'
 
 const Checkbox = props => {
@@ -10,8 +10,8 @@ const Checkbox = props => {
   return (
     <CheckBoxWrapper disabled={disabled}>
       <StyledInput type="checkbox" {...props} />
-      <Icon name="boxChecked" size={size} data-name="checked" />
-      <Icon name="boxEmpty" size={size} data-name="empty" />
+      <BoxChecked size={size} data-name="checked" />
+      <BoxEmpty size={size} data-name="empty" />
     </CheckBoxWrapper>
   )
 }

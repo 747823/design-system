@@ -1,7 +1,7 @@
 {
-  "name": "pcln-design-system",
-  "version": "2.0.5",
-  "description": "Priceline Design System",
+  "name": "pcln-design-system-perf",
+  "version": "1.0.0",
+  "description": "Priceline Design System Performant",
   "main": "dist/index.cjs.js",
   "module": "dist/index.esm.js",
   "scripts": {
@@ -50,7 +50,7 @@
     ]
   },
   "dependencies": {
-    "pcln-icons": "^2.0.4",
+    "pcln-icons-perf": "^1.0.0",
     "prop-types": "^15.7.2",
     "styled-system": "^3.2.1"
   },
